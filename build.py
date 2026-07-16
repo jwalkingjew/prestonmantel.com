@@ -23,13 +23,11 @@ PAGES = [
 ]
 
 STATUS_GROUPS = [
-    ("job_market_paper", "Job Market Paper"),
     ("under_review", "Under Review"),
     ("working", "Working Papers"),
 ]
 
 STATUS_LABELS = {
-    "job_market_paper": "Job Market Paper",
     "under_review": "Under Review",
     "working": "Working Paper",
 }
@@ -137,6 +135,54 @@ def render_paper(paper, number):
     )
 
 
+def render_research_feature(paper):
+    url = paper_url(paper)
+    primary = anchor(url, "Read on SSRN", "button button-light") if url else ""
+    points = "".join(f'<li>{esc(point)}</li>' for point in paper.get("bullets", [])[:2])
+    return (
+        f'<section class="research-feature" id="{esc(paper["id"])}" aria-labelledby="research-feature-title">'
+        '<div class="research-feature-main">'
+        '<p class="eyebrow eyebrow-light">Job Market Paper · Under Review</p>'
+        f'<h2 id="research-feature-title">{esc(paper.get("short_title", paper["title"]))}</h2>'
+        f'<p class="research-feature-full-title">{esc(paper["title"])}</p>'
+        f'<p class="research-feature-summary">{esc(paper.get("featured_summary", ""))}</p>'
+        f'<ul>{points}</ul>'
+        f'<div class="research-feature-actions">{primary}</div>'
+        f'{render_abstract(paper)}'
+        '</div>'
+        '<aside class="research-feature-meta">'
+        '<span class="research-feature-number">01</span>'
+        '<div><small>Status</small><strong>Under Review</strong></div>'
+        '<div><small>Author</small><strong>Preston Mantel</strong></div>'
+        '</aside></section>'
+    )
+
+
+def render_directory_paper(paper, number, status_label):
+    url = paper_url(paper)
+    short_title = paper.get("short_title", paper["title"])
+    title = anchor(url, short_title) if url else esc(short_title)
+    full_title = f'<p class="directory-full-title">{esc(paper["title"])}</p>' if short_title != paper["title"] else ""
+    summary = paper.get("bullets", [""])[0] if paper.get("bullets") else ""
+    action = anchor(url, "Open paper", "directory-action") if url else '<span class="availability">Draft available upon request</span>'
+    presentations = ""
+    if paper.get("presentations"):
+        items = "".join(f'<li>{esc(item)}</li>' for item in paper["presentations"])
+        presentations = f'<details class="presentations"><summary>Presentations</summary><ul>{items}</ul></details>'
+    return (
+        f'<article class="directory-paper" id="{esc(paper["id"])}">'
+        f'<div class="directory-paper-number">{number:02d}</div>'
+        '<div class="directory-paper-main">'
+        f'{render_badges(paper)}<h3>{title}</h3>{full_title}{render_authors(paper)}'
+        f'<p class="directory-summary">{esc(summary)}</p>'
+        f'<div class="directory-details">{render_abstract(paper)}{presentations}</div>'
+        '</div>'
+        '<aside class="directory-paper-meta">'
+        f'<strong>{esc(status_label)}</strong>{action}'
+        '</aside></article>'
+    )
+
+
 def render_featured_paper(paper):
     url = paper_url(paper)
     points = "".join(f'<li>{esc(point)}</li>' for point in paper.get("bullets", [])[:2])
@@ -145,7 +191,7 @@ def render_featured_paper(paper):
         '<section class="featured-paper" aria-labelledby="featured-title">'
         '<div class="featured-index"><span>01</span><span>Featured Research</span></div>'
         '<div class="featured-main">'
-        '<p class="eyebrow eyebrow-light">Job Market Paper</p>'
+        '<p class="eyebrow eyebrow-light">Job Market Paper · Under Review</p>'
         f'<h2 id="featured-title">{esc(paper.get("short_title", paper["title"]))}</h2>'
         f'<p class="featured-full-title">{esc(paper["title"])}</p>'
         f'<ul>{points}</ul>'
@@ -155,7 +201,7 @@ def render_featured_paper(paper):
 
 
 def render_home(profile, papers):
-    featured = next(paper for paper in papers if paper["status"] == "job_market_paper" and paper.get("show_on_site"))
+    featured = next(paper for paper in papers if paper.get("job_market_paper") and paper.get("show_on_site"))
     return (
         '<section class="home-hero">'
         '<div class="hero-copy">'
@@ -193,46 +239,60 @@ def render_home(profile, papers):
 
 def render_research(profile, papers):
     visible = [paper for paper in papers if paper.get("show_on_site")]
-    groups = []
-    number = 1
-    for status, heading in STATUS_GROUPS:
-        group = [paper for paper in visible if paper["status"] == status]
-        if not group:
-            continue
-        cards = []
-        for paper in group:
-            cards.append(render_paper(paper, number))
-            number += 1
-        groups.append(f'<section class="paper-group"><h2 class="group-title">{heading}</h2>{"".join(cards)}</section>')
+    featured = next(paper for paper in visible if paper.get("job_market_paper"))
+    under_review = [paper for paper in visible if paper["status"] == "under_review" and not paper.get("job_market_paper")]
+    working = [paper for paper in visible if paper["status"] == "working"]
+    under_cards = "".join(render_directory_paper(paper, number, "Under Review") for number, paper in enumerate(under_review, 2))
+    working_cards = "".join(render_directory_paper(paper, number, "Working Paper") for number, paper in enumerate(working, 2 + len(under_review)))
     return (
-        '<header class="page-hero"><p class="eyebrow">Research</p><h1>Market microstructure and market design</h1>'
+        '<header class="page-hero directory-page-hero"><p class="eyebrow">Research Directory</p><h1>Research</h1>'
         '<p>I study how trading rules and market mechanisms shape liquidity, price discovery, and investor outcomes.</p></header>'
-        f'{"".join(groups)}'
+        f'{render_research_feature(featured)}'
+        '<section class="research-directory" data-tabset>'
+        '<div class="directory-heading"><p class="eyebrow">Additional Research</p><h2>Browse papers by status</h2></div>'
+        '<div class="directory-tabs" role="tablist" aria-label="Research categories">'
+        '<button type="button" role="tab" id="research-tab-under-review" aria-controls="research-panel-under-review" aria-selected="true">Under Review</button>'
+        '<button type="button" role="tab" id="research-tab-working" aria-controls="research-panel-working" aria-selected="false" tabindex="-1">Working Papers</button>'
+        '</div>'
+        f'<div class="directory-panel" id="research-panel-under-review" role="tabpanel" aria-labelledby="research-tab-under-review">{under_cards}</div>'
+        f'<div class="directory-panel" id="research-panel-working" role="tabpanel" aria-labelledby="research-tab-working" hidden>{working_cards}</div>'
+        '</section>'
     )
 
 
 def render_teaching(teaching):
-    rows = "".join(
-        '<tr>'
-        f'<th scope="row"><strong>{esc(course["name"])}</strong><span>{esc(course["code"])}</span></th>'
-        f'<td data-label="Term">{esc(course["term"])}</td>'
-        f'<td data-label="Students">{esc(course["students"])}</td>'
-        f'<td data-label="Mean / 8">{esc(course["eval_mean"])}</td>'
-        f'<td data-label="Median / 8">{esc(course["eval_median"])}</td>'
-        '</tr>' for course in teaching["courses"]
+    course_cards = "".join(
+        '<article class="teaching-course-card">'
+        f'<div class="teaching-course-meta"><strong>{esc(course["code"])}</strong><span>{esc(course["term"])}</span></div>'
+        f'<h2>{esc(course["name"])}</h2>'
+        '<dl>'
+        f'<div><dt>Students</dt><dd>{esc(course["students"])}</dd></div>'
+        f'<div><dt>Mean Evaluation</dt><dd>{esc(course["eval_mean"])} / 8</dd></div>'
+        f'<div><dt>Median</dt><dd>{esc(course["eval_median"])} / 8</dd></div>'
+        '</dl></article>' for course in teaching["courses"]
     )
-    service = "".join(f'<li>{esc(item)}</li>' for item in teaching.get("service", []))
+    evaluation_rows = "".join(
+        '<div class="evaluation-row">'
+        f'<div><strong>{esc(course["name"])}</strong><span>{esc(course["code"])} · {esc(course["term"])}</span></div>'
+        f'<div><small>Mean</small><strong>{esc(course["eval_mean"])} / 8</strong></div>'
+        f'<div><small>Median</small><strong>{esc(course["eval_median"])} / 8</strong></div>'
+        '</div>' for course in teaching["courses"]
+    )
+    service_cards = "".join(f'<article class="service-card"><p>{esc(item)}</p></article>' for item in teaching.get("service", []))
     return (
-        '<header class="page-hero"><p class="eyebrow">Teaching</p><h1>Finance in practice</h1>'
-        '<p>I teach finance by connecting analytical tools to the choices people make in real markets.</p></header>'
-        '<section class="teaching-overview">'
-        f'<p><strong>{esc(teaching["role"])}</strong><span>{esc(teaching["period"])}</span></p></section>'
-        '<section class="table-section"><div class="section-heading"><p class="eyebrow">Course Record</p><h2>Instructor evaluations</h2></div>'
-        f'<p class="evaluation-context"><strong>Evaluation scale:</strong> {esc(teaching["eval_note"])}</p>'
-        '<div class="table-wrap"><table><thead><tr><th scope="col">Course</th><th scope="col">Term</th>'
-        '<th scope="col">Students</th><th scope="col">Mean / 8</th><th scope="col">Median / 8</th></tr></thead>'
-        f'<tbody>{rows}</tbody></table></div></section>'
-        f'<section class="service"><p class="eyebrow">Service &amp; Mentorship</p><ul>{service}</ul></section>'
+        '<header class="page-hero directory-page-hero"><p class="eyebrow">Teaching Record</p><h1>Teaching</h1>'
+        '<p>Courses, evaluations, and service at the University of Cincinnati.</p></header>'
+        '<section class="teaching-directory" data-tabset>'
+        '<div class="directory-tabs" role="tablist" aria-label="Teaching categories">'
+        '<button type="button" role="tab" id="teaching-tab-courses" aria-controls="teaching-panel-courses" aria-selected="true">Courses</button>'
+        '<button type="button" role="tab" id="teaching-tab-evaluations" aria-controls="teaching-panel-evaluations" aria-selected="false" tabindex="-1">Evaluations</button>'
+        '<button type="button" role="tab" id="teaching-tab-service" aria-controls="teaching-panel-service" aria-selected="false" tabindex="-1">Service</button>'
+        '</div>'
+        f'<div class="directory-panel teaching-course-grid" id="teaching-panel-courses" role="tabpanel" aria-labelledby="teaching-tab-courses">{course_cards}</div>'
+        '<div class="directory-panel evaluation-directory" id="teaching-panel-evaluations" role="tabpanel" aria-labelledby="teaching-tab-evaluations" hidden>'
+        f'<p class="evaluation-context"><strong>Evaluation scale:</strong> {esc(teaching["eval_note"])}</p>{evaluation_rows}</div>'
+        f'<div class="directory-panel service-directory" id="teaching-panel-service" role="tabpanel" aria-labelledby="teaching-tab-service" hidden>{service_cards}</div>'
+        '</section>'
     )
 
 

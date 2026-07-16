@@ -7,7 +7,8 @@
   title: "When Lots Matter: The Impact of SEC Round Lot Modernization on Liquidity"
   short_title: "When Lots Matter"
   authors: [Preston Mantel]
-  status: job_market_paper
+  status: under_review
+  job_market_paper: true
   date: 2025-11
   ssrn: "5757242"
   abstract_source: "Current research repository draft"
@@ -33,6 +34,9 @@
     visibility effects without the welfare gains. The reform also alters optimal
     stock split design by making post-split liquidity sensitive to round lot
     reassessment timing.
+  featured_summary: >-
+    When a transparency reform improves headline market quality metrics, how
+    much of the improvement reaches investors?
   bullets:
     - Examines how SEC round lot modernization changes displayed and realized trading costs.
     - Separates the visibility, crumbling-quote, and adverse-selection channels behind the reform.
