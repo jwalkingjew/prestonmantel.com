@@ -84,13 +84,13 @@ def render_authors(paper):
 
 
 def render_badges(paper):
-    badges = [f'<span class="label">{esc(STATUS_LABELS[paper["status"]])}</span>']
+    badges = []
     badges.extend(f'<span class="label label-muted">{esc(award)}</span>' for award in paper.get("awards", []))
     for media in paper.get("media", []):
         text = f'Media: {media["outlet"]}'
         badges.append(anchor(media["url"], text, "label label-muted") if media.get("url")
                       else f'<span class="label label-muted">{esc(text)}</span>')
-    return '<div class="paper-labels">' + "".join(badges) + "</div>"
+    return '<div class="paper-labels">' + "".join(badges) + "</div>" if badges else ""
 
 
 def paper_url(paper):
@@ -203,11 +203,9 @@ def render_research(profile, papers):
             cards.append(render_paper(paper, number))
             number += 1
         groups.append(f'<section class="paper-group"><h2 class="group-title">{heading}</h2>{"".join(cards)}</section>')
-    interests = "".join(f'<li>{esc(item)}</li>' for item in profile.get("research_interests", []))
     return (
-        '<header class="page-hero"><p class="eyebrow">Research</p><h1>Markets as designed systems</h1>'
+        '<header class="page-hero"><p class="eyebrow">Research</p><h1>Market microstructure and market design</h1>'
         '<p>I study how trading rules and market mechanisms shape liquidity, price discovery, and investor outcomes.</p></header>'
-        f'<ul class="interest-list" aria-label="Research interests">{interests}</ul>'
         f'{"".join(groups)}'
     )
 
@@ -216,22 +214,23 @@ def render_teaching(teaching):
     rows = "".join(
         '<tr>'
         f'<th scope="row"><strong>{esc(course["name"])}</strong><span>{esc(course["code"])}</span></th>'
-        f'<td>{esc(course["term"])}</td><td>{esc(course["students"])}</td>'
-        f'<td>{esc(course["eval_mean"])}</td><td>{esc(course["eval_median"])}</td>'
+        f'<td data-label="Term">{esc(course["term"])}</td>'
+        f'<td data-label="Students">{esc(course["students"])}</td>'
+        f'<td data-label="Mean / 8">{esc(course["eval_mean"])}</td>'
+        f'<td data-label="Median / 8">{esc(course["eval_median"])}</td>'
         '</tr>' for course in teaching["courses"]
     )
     service = "".join(f'<li>{esc(item)}</li>' for item in teaching.get("service", []))
     return (
-        '<header class="page-hero"><p class="eyebrow">Teaching</p><h1>Clear models, practical decisions</h1>'
+        '<header class="page-hero"><p class="eyebrow">Teaching</p><h1>Finance in practice</h1>'
         '<p>I teach finance by connecting analytical tools to the choices people make in real markets.</p></header>'
         '<section class="teaching-overview">'
-        '<div><p class="eyebrow">Role</p>'
-        f'<h2>{esc(teaching["role"])}</h2><p>{esc(teaching["period"])}</p></div>'
-        '<div class="evaluation-note"><strong>8-point scale</strong>'
-        f'<p>{esc(teaching["eval_note"])}</p></div></section>'
+        '<div><p class="eyebrow">Appointment</p>'
+        f'<h2>{esc(teaching["role"])}</h2><p>{esc(teaching["period"])}</p></div></section>'
         '<section class="table-section"><div class="section-heading"><p class="eyebrow">Course Record</p><h2>Instructor evaluations</h2></div>'
+        f'<p class="evaluation-context"><strong>Evaluation scale:</strong> {esc(teaching["eval_note"])}</p>'
         '<div class="table-wrap"><table><thead><tr><th scope="col">Course</th><th scope="col">Term</th>'
-        '<th scope="col">Students</th><th scope="col">Mean</th><th scope="col">Median</th></tr></thead>'
+        '<th scope="col">Students</th><th scope="col">Mean / 8</th><th scope="col">Median / 8</th></tr></thead>'
         f'<tbody>{rows}</tbody></table></div></section>'
         f'<section class="service"><p class="eyebrow">Service &amp; Mentorship</p><ul>{service}</ul></section>'
     )
@@ -251,7 +250,7 @@ def render_tools(projects):
             '</article>'
         )
     return (
-        '<header class="page-hero"><p class="eyebrow">Tools</p><h1>Useful systems, built from experience</h1>'
+        '<header class="page-hero"><p class="eyebrow">Tools</p><h1>Software for teaching and research</h1>'
         '<p>I build tools when a recurring problem in teaching or research calls for a better workflow.</p></header>'
         f'<section class="tools-list">{"".join(cards)}</section>'
     )
@@ -277,7 +276,7 @@ def render_about(profile):
     advisor_html = anchor(advisor["url"], advisor["name"]) if advisor.get("url") else esc(advisor.get("name", ""))
     interests = "".join(f'<li>{esc(item)}</li>' for item in profile.get("research_interests", []))
     return (
-        '<header class="page-hero about-hero"><p class="eyebrow">About</p><h1>From mechanical systems to financial markets</h1>'
+        '<header class="page-hero about-hero"><p class="eyebrow">About</p><h1>Engineering, finance, and market design</h1>'
         '<p>Engineering gave me a way to think about constraints, feedback, and system performance. Finance gave me a new class of systems to study.</p></header>'
         '<section class="about-grid"><div class="about-copy"><h2>Background</h2>'
         f'<p>{esc(profile["background"])}</p><p>My advisor is {advisor_html}.</p></div>'
