@@ -28,6 +28,7 @@ STATUS_GROUPS = [
 ]
 
 STATUS_LABELS = {
+    "job_market_paper": "Job Market Paper",
     "under_review": "Under Review",
     "working": "Working Paper",
 }
@@ -142,7 +143,7 @@ def render_research_feature(paper):
     return (
         f'<section class="research-feature" id="{esc(paper["id"])}" aria-labelledby="research-feature-title">'
         '<div class="research-feature-main">'
-        '<p class="eyebrow eyebrow-light">Job Market Paper · Under Review</p>'
+        '<p class="eyebrow eyebrow-light">Job Market Paper</p>'
         f'<h2 id="research-feature-title">{esc(paper.get("short_title", paper["title"]))}</h2>'
         f'<p class="research-feature-full-title">{esc(paper["title"])}</p>'
         f'<p class="research-feature-summary">{esc(paper.get("featured_summary", ""))}</p>'
@@ -152,7 +153,7 @@ def render_research_feature(paper):
         '</div>'
         '<aside class="research-feature-meta">'
         '<span class="research-feature-number">01</span>'
-        '<div><small>Status</small><strong>Under Review</strong></div>'
+        '<div><small>Status</small><strong>Job Market Paper</strong></div>'
         '<div><small>Author</small><strong>Preston Mantel</strong></div>'
         '</aside></section>'
     )
@@ -191,7 +192,7 @@ def render_featured_paper(paper):
         '<section class="featured-paper" aria-labelledby="featured-title">'
         '<div class="featured-index"><span>01</span><span>Featured Research</span></div>'
         '<div class="featured-main">'
-        '<p class="eyebrow eyebrow-light">Job Market Paper · Under Review</p>'
+        '<p class="eyebrow eyebrow-light">Job Market Paper</p>'
         f'<h2 id="featured-title">{esc(paper.get("short_title", paper["title"]))}</h2>'
         f'<p class="featured-full-title">{esc(paper["title"])}</p>'
         f'<ul>{points}</ul>'
