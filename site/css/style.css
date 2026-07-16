@@ -124,6 +124,10 @@ a {
   white-space: nowrap;
 }
 
+.header-menu {
+  display: contents;
+}
+
 .site-nav {
   display: flex;
   align-items: stretch;
@@ -171,7 +175,7 @@ a {
   display: flex;
   align-items: center;
   align-self: center;
-  gap: 7px;
+  gap: 6px;
   padding: 8px 0 8px 18px;
   color: var(--ink-soft);
   background: none;
@@ -183,9 +187,12 @@ a {
   text-transform: uppercase;
 }
 
-.theme-icon {
+.theme-value {
   color: var(--accent);
-  font-size: 18px;
+}
+
+.menu-toggle {
+  display: none;
 }
 
 .site-main {
@@ -670,8 +677,7 @@ a {
 }
 
 .text-link::after {
-  padding-left: 7px;
-  content: "↗";
+  content: none;
 }
 
 .availability {
@@ -1125,8 +1131,7 @@ tbody th span {
 }
 
 .directory-action::after {
-  padding-left: 6px;
-  content: "↗";
+  content: none;
 }
 
 .teaching-directory {
@@ -1512,12 +1517,9 @@ tbody th span {
     font-size: 16px;
   }
 
-  .site-header {
-    position: relative;
-  }
-
   .header-inner {
     grid-template-columns: 1fr auto;
+    align-items: center;
     min-height: 64px;
     padding: 0 18px;
   }
@@ -1526,27 +1528,110 @@ tbody th span {
     font-size: 17px;
   }
 
+  .header-menu {
+    position: absolute;
+    z-index: 30;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: 10px 18px 18px;
+    background: color-mix(in srgb, var(--paper) 97%, transparent);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: 0 18px 36px color-mix(in srgb, var(--ink) 14%, transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .site-header.menu-open .header-menu {
+    display: block;
+  }
+
   .site-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-    gap: 24px;
-    overflow-x: auto;
-    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .site-nav a {
-    min-height: 48px;
-    font-size: 11px;
+    min-height: 50px;
+    padding: 0 4px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 12px;
     white-space: nowrap;
   }
 
-  .theme-label {
-    display: none;
+  .site-nav a::after {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: -18px;
+    width: 3px;
+    height: 24px;
+    transform: translateY(-50%) scaleY(0.4);
+  }
+
+  .site-nav a.active::after,
+  .site-nav a:hover::after {
+    transform: translateY(-50%) scaleY(1);
   }
 
   .theme-toggle {
-    padding-left: 14px;
+    width: 100%;
+    min-height: 50px;
+    justify-content: space-between;
+    padding: 0 4px;
+    border-left: 0;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    font: 700 11px/1 var(--sans);
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .menu-toggle-icon {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 14px;
+  }
+
+  .menu-toggle-icon span {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: currentColor;
+    transition: top 160ms ease, transform 160ms ease;
+  }
+
+  .menu-toggle-icon span:first-child {
+    top: 3px;
+  }
+
+  .menu-toggle-icon span:last-child {
+    top: 10px;
+  }
+
+  .site-header.menu-open .menu-toggle-icon span:first-child {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+
+  .site-header.menu-open .menu-toggle-icon span:last-child {
+    top: 6px;
+    transform: rotate(-45deg);
   }
 
   .site-main {
@@ -1958,8 +2043,9 @@ tbody th span {
     padding-left: 14px;
   }
 
-  .site-nav {
-    gap: 20px;
+  .header-menu {
+    padding-right: 14px;
+    padding-left: 14px;
   }
 
   .hero-copy {
