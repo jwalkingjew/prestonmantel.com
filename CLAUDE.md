@@ -34,6 +34,7 @@ Commit both the data change AND the regenerated `site/` output. Deploy status: `
 | `data/papers.yaml` | Canonical paper metadata. Feeds site now, CV generation later |
 | `data/teaching.yaml` | Courses, evals, service |
 | `data/projects.yaml` | Tools (proftools.com live; roadmap items have `show_on_site: false`) |
+| `cv/academic_resume.tex` | Canonical public CV source; must remain free of private address and phone data |
 | `docs/facts.md` | Verified biography, each fact tagged with source + audience |
 | `docs/content-rules.md` | Full privacy + accuracy rules |
 | `docs/style-guide.md` | Voice + design conventions |

@@ -3,7 +3,7 @@
 Goal: the YAML in `data/` is the single source of truth; CVs, resumes, and application materials are rendered from it so nothing drifts.
 
 ## Current state (July 2026)
-- The live CV is a manually maintained LaTeX/PDF: `archive/annual-reports/2026/preston_mantel_cv.pdf`. The web-published copy at `static/files/Mantel_CV.pdf` must have home address + phone stripped (see `docs/content-rules.md`).
+- The canonical public CV source is `cv/academic_resume.tex`, adapted from Preston's original LaTeX source. The web-published copy at `static/files/Mantel_CV.pdf` must have home address and phone stripped (see `docs/content-rules.md`). The original private source is archived locally under `archive/cv-source/` and must never be committed.
 - `data/*.yaml` already contains everything the CV needs except coursework and the graduate-assistant line (both in `docs/facts.md`).
 
 ## Target pipeline

@@ -27,3 +27,7 @@ tmp/
 cv/*.aux
 cv/*.log
 cv/*.out
+cv/*.fdb_latexmk
+cv/*.fls
+cv/*.synctex.gz
+cv/academic_resume.pdf
