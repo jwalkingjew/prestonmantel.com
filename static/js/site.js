@@ -3,12 +3,8 @@
   var toggle = document.querySelector('.theme-toggle');
   var metaTheme = document.querySelector('meta[name="theme-color"]');
 
-  function systemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
   function activeTheme() {
-    return root.dataset.theme || systemTheme();
+    return root.dataset.theme || 'light';
   }
 
   function updateControl() {
@@ -27,11 +23,6 @@
       updateControl();
     });
   }
-
-  var media = window.matchMedia('(prefers-color-scheme: dark)');
-  media.addEventListener('change', function () {
-    if (!root.dataset.theme) updateControl();
-  });
 
   updateControl();
 }());

@@ -159,7 +159,6 @@ def render_home(profile, papers):
     return (
         '<section class="home-hero">'
         '<div class="hero-copy">'
-        f'<p class="eyebrow">{esc(profile["hero_eyebrow"])}</p>'
         f'<h1>{esc(profile["hero_headline"])}</h1>'
         f'<p class="hero-intro">{esc(profile["hero_intro"])}</p>'
         f'<p class="job-market-line">{esc(profile["job_market_line"])}</p>'

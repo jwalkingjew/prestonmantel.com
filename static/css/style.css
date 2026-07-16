@@ -32,24 +32,6 @@
   --shadow: rgba(0, 0, 0, 0.28);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper: #151b22;
-    --paper-deep: #1e2731;
-    --paper-light: #202a35;
-    --ink: #f0eadf;
-    --ink-soft: #bbc2c7;
-    --accent: #d58396;
-    --accent-dark: #e7a5b4;
-    --rule: #3d4854;
-    --navy: #0c131b;
-    --navy-raised: #17222d;
-    --on-navy: #f4eee4;
-    --shadow: rgba(0, 0, 0, 0.28);
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -60,6 +42,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   color: var(--ink);
   background: var(--paper);
   font-family: var(--sans);
@@ -227,42 +210,39 @@ a {
 
 .home-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
-  min-height: 680px;
-  border-right: 1px solid var(--rule);
-  border-left: 1px solid var(--rule);
+  grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr);
+  min-height: min(680px, calc(100svh - 92px));
+  gap: clamp(28px, 4vw, 64px);
 }
 
 .hero-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 88px 8vw 86px 7vw;
-  border-right: 1px solid var(--rule);
+  padding: clamp(52px, 6vw, 82px) 0;
 }
 
 .hero-copy h1 {
-  max-width: 820px;
+  max-width: 760px;
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(56px, 6.6vw, 96px);
+  font-size: clamp(50px, 4.45vw, 72px);
   font-weight: 600;
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  line-height: 1.01;
+  letter-spacing: -0.045em;
 }
 
 .hero-intro {
-  max-width: 700px;
-  margin: 38px 0 0;
+  max-width: 640px;
+  margin: 30px 0 0;
   color: var(--ink-soft);
-  font-family: var(--serif);
-  font-size: clamp(21px, 1.8vw, 27px);
-  line-height: 1.55;
+  font-size: clamp(18px, 1.35vw, 21px);
+  line-height: 1.62;
 }
 
 .job-market-line {
   max-width: 620px;
-  margin: 28px 0 0;
+  margin: 24px 0 0;
   padding-left: 18px;
   color: var(--ink);
   border-left: 3px solid var(--accent);
@@ -276,7 +256,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 .button {
@@ -335,24 +315,26 @@ a {
 .hero-profile {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 44px 36px 36px;
+  justify-content: center;
+  align-self: center;
+  min-width: 0;
+  padding: clamp(26px, 3vw, 40px);
   background: var(--paper-deep);
 }
 
 .portrait-frame {
   position: relative;
-  width: min(100%, 430px);
-  margin: auto auto 28px;
-  padding: 14px 14px 0 0;
+  width: min(100%, 350px);
+  margin: 0 auto 24px;
+  padding: 10px 10px 0 0;
 }
 
 .portrait-frame::before {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100% - 14px);
-  height: calc(100% - 14px);
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
   border: 1px solid color-mix(in srgb, var(--ink) 45%, transparent);
   content: "";
 }
@@ -360,9 +342,10 @@ a {
 .portrait-frame img {
   position: relative;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  box-shadow: 28px 28px 0 color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: 16px 16px 0 color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
 .profile-caption {
@@ -377,7 +360,7 @@ a {
 .profile-caption strong {
   margin-bottom: 3px;
   font-family: var(--serif);
-  font-size: 25px;
+  font-size: 23px;
 }
 
 .profile-caption span {
@@ -386,25 +369,24 @@ a {
 
 .engineering-bridge {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  align-items: center;
-  gap: 28px;
-  padding: 42px 7vw;
-  border: 1px solid var(--rule);
-  border-top: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+  padding: 46px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 
 .engineering-bridge p {
   margin: 0;
+  padding-top: 16px;
+  border-top: 2px solid var(--accent);
   font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.45;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 .engineering-bridge span {
-  color: var(--accent);
-  font-family: var(--serif);
-  font-size: 36px;
+  display: none;
 }
 
 .featured-paper {
@@ -1061,21 +1043,17 @@ tbody th span {
   }
 
   .home-hero {
-    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
-    min-height: 620px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+    min-height: min(620px, calc(100svh - 92px));
+    gap: 32px;
   }
 
   .hero-copy {
-    padding: 70px 48px;
+    padding: 58px 0;
   }
 
   .engineering-bridge {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .engineering-bridge span {
-    font-size: 20px;
+    gap: 20px;
   }
 
   .page-hero {
@@ -1097,7 +1075,7 @@ tbody th span {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 820px) {
   body {
     font-size: 16px;
   }
@@ -1108,7 +1086,7 @@ tbody th span {
 
   .header-inner {
     grid-template-columns: 1fr auto;
-    min-height: 74px;
+    min-height: 64px;
     padding: 0 18px;
   }
 
@@ -1126,7 +1104,7 @@ tbody th span {
   }
 
   .site-nav a {
-    min-height: 54px;
+    min-height: 48px;
     font-size: 11px;
     white-space: nowrap;
   }
@@ -1146,36 +1124,76 @@ tbody th span {
   .home-hero {
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    gap: 0;
     border: 0;
   }
 
   .hero-copy {
-    order: 2;
-    padding: 46px 2px 54px;
+    order: 1;
+    padding: 42px 0 36px;
     border: 0;
   }
 
   .hero-copy h1 {
-    font-size: clamp(48px, 15vw, 72px);
+    max-width: 620px;
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 1.02;
   }
 
   .hero-intro {
-    margin-top: 28px;
-    font-size: 20px;
+    margin-top: 24px;
+    font-size: clamp(17px, 4.8vw, 19px);
+    line-height: 1.58;
+  }
+
+  .job-market-line {
+    margin-top: 20px;
+    padding-left: 14px;
+    font-size: 13px;
   }
 
   .hero-profile {
-    order: 1;
-    padding: 24px 24px 28px;
+    display: grid;
+    grid-template-columns: clamp(108px, 24vw, 160px) minmax(0, 1fr);
+    order: 2;
+    align-self: stretch;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
   }
 
   .portrait-frame {
-    width: min(82%, 380px);
-    margin-bottom: 28px;
+    width: 100%;
+    margin: 0;
+    padding: 7px 7px 0 0;
+  }
+
+  .portrait-frame::before {
+    width: calc(100% - 7px);
+    height: calc(100% - 7px);
+  }
+
+  .portrait-frame img {
+    box-shadow: 8px 8px 0 color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  .profile-caption {
+    justify-content: center;
+    min-width: 0;
+    padding: 0 0 0 18px;
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  .profile-caption strong {
+    font-size: 21px;
   }
 
   .engineering-bridge {
-    padding: 30px 24px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 38px 0;
   }
 
   .engineering-bridge p {
@@ -1210,7 +1228,7 @@ tbody th span {
   }
 
   .featured-main h2 {
-    font-size: 48px;
+    font-size: clamp(38px, 12vw, 48px);
   }
 
   .featured-main ul {
@@ -1329,6 +1347,61 @@ tbody th span {
   .site-footer {
     grid-template-columns: 1fr;
     padding: 40px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-inner,
+  .site-main {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .site-nav {
+    gap: 20px;
+  }
+
+  .hero-copy {
+    padding-top: 36px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(40px, 12.5vw, 52px);
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-profile {
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .profile-caption {
+    padding-left: 14px;
+    font-size: 12px;
+  }
+
+  .profile-caption strong {
+    font-size: 19px;
+  }
+
+  .featured-main {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(42px, 13vw, 56px);
   }
 }
 
