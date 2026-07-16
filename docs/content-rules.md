@@ -15,10 +15,11 @@ The repo is **public** and the site is the public face of Preston's academic car
 - Graduate assistant line, coursework list, granular employment metrics.
 
 ## Accuracy
-- **Sources of truth, in order:** (1) verified SSRN abstracts (see `abstract_verified` in `data/papers.yaml`), (2) the current CV in `archive/annual-reports/<latest>/`, (3) `docs/facts.md`. Local research-repo drafts are NOT sources — figures differ across draft versions (the Robinhood paper's PFOF magnitudes were explicitly flagged as needing verification).
+- **Sources of truth, in order:** (1) verified SSRN abstracts, (2) current research-repository abstracts explicitly authorized by Preston, (3) the current CV in `archive/annual-reports/<latest>/`, and (4) `docs/facts.md`. Record the source and review date in `data/papers.yaml` whenever an abstract changes.
 - SSRN blocks automated fetching (HTTP 403). To verify an abstract, ask Preston to paste it. Record the verification date in `papers.yaml`.
 - Paper status changes fast (submissions, R&Rs, acceptances). When drafting anything status-dependent, confirm current status with Preston rather than trusting file dates.
 - Every quantitative claim on the site must be traceable to a tagged fact in `facts.md` or a verified abstract in `papers.yaml`.
 
 ## Tone boundaries
 - No hype, no marketing language, no emojis on the site. First person, plain, confident. See `docs/style-guide.md`.
+- No em dashes in public site copy. The build fails if one reaches a generated text asset.

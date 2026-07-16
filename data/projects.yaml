@@ -2,7 +2,7 @@
 # Unbuilt/roadmap items stay hidden — see docs/roadmap.md before flipping a flag.
 - id: proftools
   name: ProfTools
-  url: https://proftools.com
+  url: https://www.myproftools.com/
   show_on_site: true
   description: >-
     A quiz-integrity analyzer for the Canvas LMS. Instructors connect their

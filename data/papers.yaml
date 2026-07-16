@@ -1,44 +1,84 @@
-# Canonical paper metadata. Ordering here = ordering on site and CV.
-# RULES (docs/content-rules.md):
-#  - abstract must be VERBATIM from SSRN; set abstract_verified (YYYY-MM-DD) when
-#    Preston confirms. Site renders the abstract only when abstract_verified is set.
-#  - bullets come from the current CV — the only other approved source of numbers.
-#  - Never render private_notes anywhere. Never name under-review journals on the site.
+# Canonical paper metadata. Ordering here controls the site and future CV output.
+# Preston explicitly authorized current repository drafts as abstract sources on
+# 2026-07-16. Record the source and review date whenever an abstract changes.
+# Never render private_notes or name an under-review journal on the public site.
 
 - id: round-lots
-  title: "When Lots Matter: SEC Round Lot Modernization and Liquidity"
+  title: "When Lots Matter: The Impact of SEC Round Lot Modernization on Liquidity"
+  short_title: "When Lots Matter"
   authors: [Preston Mantel]
   status: job_market_paper
   date: 2025-11
   ssrn: "5757242"
-  abstract: ""            # pending: Preston to paste verbatim from SSRN
-  abstract_verified: null
+  abstract_source: "Current research repository draft"
+  abstract_verified: 2026-07-16
+  abstract: >-
+    When a transparency reform improves headline market quality metrics, how much
+    of the improvement reaches investors? I provide the first empirical analysis
+    of the SEC's round lot modernization, which dynamically adjusts round lot
+    sizes by price tier and lets smaller orders in high-priced stocks set the NBBO
+    for the first time. Conducting an event study around the November 2025
+    compliance date, I document a sharp wedge between displayed and realized
+    benefits: quoted spreads narrow by 18.4%, implying $10.5 billion in annual
+    savings if every trade executed at the quote, but effective spreads narrow by
+    only 6.7%, delivering $1.4 billion in realized savings. The seven-fold gap
+    indicates that the reform primarily redistributes trade execution within the
+    spread rather than reducing trading costs dollar-for-dollar. To explain the
+    wedge, I disentangle two channels of inside-the-quote activity. The mechanical
+    channel, crumbling quotes, significantly amplifies welfare gains, while the
+    information channel, adverse selection, is insignificant for spread outcomes.
+    The reform succeeds by making residual quotes visible, not by resolving
+    information asymmetry, and ETFs, which face the same lot reduction without
+    meaningful adverse selection or crumbling-quote exposure, replicate the
+    visibility effects without the welfare gains. The reform also alters optimal
+    stock split design by making post-split liquidity sensitive to round lot
+    reassessment timing.
   bullets:
-    - Examines market quality and trading behavior effects of SEC round lot modernization.
-    - Studies how round lot definitions affect trading costs by impacting NBBO spreads.
-    - Finds significant decreases in spreads, volatility, and latency following round lot modernization.
+    - Examines how SEC round lot modernization changes displayed and realized trading costs.
+    - Separates the visibility, crumbling-quote, and adverse-selection channels behind the reform.
+    - Documents a large gap between headline spread improvements and savings realized by investors.
   presentations: []
   awards: []
   media: []
   show_on_site: true
   private_notes: >-
-    Repo: ~/environments/ResearchEnv/round_lot_size. Target journal ladder:
-    JFM -> JFQA -> JBF (per submission/ folder). Draft numbers (18.4% quoted /
-    6.7% effective spread narrowing, ~$1.4B realized savings) are from the
-    July 2026 revised draft — do not publish until SSRN abstract verified.
+    Repo: ~/environments/ResearchEnv/round_lot_size. Target journal ladder and
+    submission details remain private. Repository abstract authorized for site use
+    by Preston on 2026-07-16.
 
 - id: collaring
-  title: "Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility"
+  title: "Democratizing or Demoralizing: The Impact of Robinhood's Order Types on Retail Trading Costs"
+  short_title: "Democratizing or Demoralizing"
   authors: [Preston Mantel, Mehmet Sağlam]
   status: under_review
   date: 2025-11
   ssrn: "4377192"
-  abstract: ""            # pending: Preston to paste verbatim from SSRN
-  abstract_verified: null
+  abstract_source: "Current research repository draft"
+  abstract_verified: 2026-07-16
+  abstract: >-
+    Order collaring at Robinhood automatically converts default market orders into
+    limit orders with a 5% spread over prior prices, advertised as protecting
+    retail investors from unfavorable execution. However, we provide empirical
+    evidence that this policy harms retail traders by increasing trading costs
+    while generating outsized broker revenue. During regular trading hours,
+    collared orders execute at an additional spread of 1.9 basis points compared
+    to uncollared sell orders on the same stocks. In after-hours trading, a
+    significant share of orders execute at the full 5% spread. Using SEC Rule 605
+    disclosures, we find that Robinhood's marketable limit orders face 1.3 basis
+    points higher effective spreads than market orders, a 15% increase in trading
+    costs. Analysis of payment-for-order-flow revenues reveals that Robinhood's
+    collared orders generate 11 to 13 cents per share in additional broker revenue,
+    a 21% premium relative to standard market orders from other brokers, revealing
+    the financial incentive behind the policy. Aggregate retail losses reach up
+    to $35 million per month. We establish causality through quasi-experiments
+    exploiting Robinhood's asymmetric buy and sell collaring, the sharp 5%
+    discontinuity in after-hours trading, its after-hours extension in 2022, and
+    its 2025 policy removal. Our analysis of the GameStop episode further reveals
+    that order collaring amplifies extreme price movements in high-retail stocks.
   bullets:
-    - Studies how Robinhood's order-collaring mechanism affects retail trading costs and volatility.
-    - Uses regular hours and after-hours trades to identify the impact of market order collaring.
-    - Finds increased retail trading costs of approximately 2 basis points, or over $2 billion in 2020.
+    - Studies how Robinhood's order-collaring policy affects retail execution costs.
+    - Combines regular-hours, after-hours, and SEC Rule 605 evidence.
+    - Identifies the broker incentives and investor costs created by the policy.
   presentations:
     - Financial Management Association Annual Meeting, Chicago (2023)
     - The Microstructure Exchange, Stockholm (2023)
@@ -47,58 +87,111 @@
     - Semi-finalist, Best Paper in Market Microstructure, FMA 2023
   media:
     - outlet: Bloomberg
-      url: ""             # ask Preston for the article link
+      url: ""
   show_on_site: true
   private_notes: >-
-    Under review at the Journal of Financial Economics per 2026 CV (earlier
-    sources say Management Science / JFQA — CV wins; never name journal on site).
-    Repo: ~/environments/ResearchEnv/collaring. PFOF cents-per-share figures in
-    local drafts flagged as unverified — never source numbers from drafts.
+    Under-review journal name remains private on the site. Repo:
+    ~/environments/ResearchEnv/collaring. Repository abstract authorized for site
+    use by Preston on 2026-07-16.
 
 - id: prediction-markets
   title: "Taker Delays and Liquidity Provision in Prediction Markets"
+  short_title: "Taker Delays and Liquidity Provision"
   authors: [Preston Mantel]
   status: working
   date: 2026-05
   ssrn: null
-  abstract: ""
-  abstract_verified: null
+  abstract_source: "Current research repository draft"
+  abstract_verified: 2026-07-16
+  abstract: >-
+    I study what happens when a market gives resting orders latency protection
+    against traders who react to a fully public payoff signal. Polymarket
+    introduced a 500-millisecond taker delay on 15-minute and 1-hour crypto Up or
+    Down contracts on November 14, 2025, leaving longer-duration crypto contracts
+    on the same underlyings untreated. Synchronizing the Polymarket order book
+    with Binance tick data, I show the protection worked at the mechanism level:
+    after sharp external price jumps, the probability that a stale resting quote
+    is hit within two seconds falls by 9 percentage points relative to
+    within-crypto controls, and the fast aggressive traders who had been earning
+    1.8 cents per take see that edge compressed by roughly a quarter without
+    reducing their activity. The rents were competed away through entry, which is
+    the paper's central causal result: treated markets gain 21.0 maker addresses
+    per market and log maker count rises by 0.28, with clean pre-trends. On-chain
+    settlement records show 105,474 new maker addresses entering during the
+    protected regime and supplying 59% of its maker volume, while average
+    per-fill maker profitability is unchanged, consistent with free entry.
+    Turnover is extreme, and 81% of delay-era addresses exit within three months
+    of the delay's removal. Forecast accuracy is unchanged. Latency protection
+    reallocated rents from fast takers to a broader, largely transient population
+    of liquidity suppliers without degrading information aggregation.
   bullets:
-    - Studies Polymarket policy changes introducing and removing taker delays in crypto markets.
-    - Uses BBO quotes and on-chain fills to estimate effects on spreads, liquidity, and maker entry.
-    - Finds that taker delays narrow quoted spreads, increase maker entry, and interact with rebates.
+    - Studies how taker delays protect resting orders in short-duration prediction markets.
+    - Synchronizes Polymarket order books with Binance data and on-chain settlement records.
+    - Finds broader maker participation without a measurable loss in forecast accuracy.
   presentations: []
   awards: []
   media: []
   show_on_site: true
-  private_notes: "Draft available on request; no SSRN posting yet."
+  private_notes: >-
+    Repo: ~/environments/ResearchEnv/prediction_markets_research. Draft available
+    on request; no SSRN posting yet. Repository abstract authorized for site use
+    by Preston on 2026-07-16.
 
 - id: counterparty-interest
-  title: "Market Making Counterparty Interest"
+  title: "Discriminatory Market Making: Evidence from Institutional Trades"
+  short_title: "Discriminatory Market Making"
   authors: [Preston Mantel, Mehmet Sağlam]
   status: working
-  date: 2025-06
+  date: 2026-07
   ssrn: null
-  abstract: ""
-  abstract_verified: null
+  abstract_source: "Current research repository draft"
+  abstract_verified: 2026-07-16
+  abstract: >-
+    We test whether market makers learn about and discriminate against informed
+    institutional clients. Using proprietary data on institutional parent and
+    child orders spanning January 2011 to March 2012, we construct a strictly
+    backward-looking measure of client informativeness based on lagged cumulative
+    price impact. Despite high persistence in client informativeness, we find no
+    evidence that market makers discriminate against informed clients. The
+    interaction between market maker fills and client informativeness is
+    statistically insignificant across price-impact horizons, for both effective
+    spreads and price improvement. This null result holds in both in-sample and
+    walk-forward out-of-sample classifications, despite evidence that informed
+    clients impose real costs on market makers. However, we document that market
+    makers do learn from bilateral experience. When an individual market maker
+    has lost money filling a specific client, it subsequently charges wider
+    effective spreads and provides less price improvement. This bilateral learning
+    is asymmetric, with losses having approximately three times the impact of
+    gains, and is purely bilateral. A market maker's pricing responds to its own
+    experience with a client but not to other market makers' experience with the
+    same client. The bilateral adjustment does not depend on whether the client is
+    classified as informed, suggesting that market makers respond to their own
+    profit and loss rather than to client informativeness itself. Clients respond
+    strategically, routing significantly more volume to market makers that offered
+    better prices, creating a two-sided equilibrium.
   bullets:
-    - Tests whether market makers treat institutional counterparties differently from retail flow.
-    - Maps proprietary institutional trades to TAQ NBBO spreads and intraday price impact.
-    - Replicates prior evidence and finds similar treatment across institutional counterparties.
+    - Tests whether market makers price institutional clients according to inferred informativeness.
+    - Finds no broad discrimination against informed clients across execution-quality measures.
+    - Documents bilateral learning from a market maker's own profit-and-loss history with each client.
   presentations: []
   awards: []
   media: []
   show_on_site: true
-  private_notes: "Uses proprietary broker-identified institutional trade data."
+  private_notes: >-
+    Repo: ~/environments/ResearchEnv/Data from Mehmet. Uses proprietary
+    broker-identified institutional trade data. Repository abstract authorized for
+    site use by Preston on 2026-07-16.
 
 - id: active-etfs
   title: "Actively Traded ETFs"
+  short_title: "Actively Traded ETFs"
   authors: [Preston Mantel, Mehmet Sağlam, Tugkan Tuzun]
   author_affiliations: { "Tugkan Tuzun": "Federal Reserve Board" }
   status: working
   date: 2025-06
   ssrn: null
   abstract: ""
+  abstract_source: ""
   abstract_verified: null
   bullets:
     - Examines conflicts between managers and investors using trades from actively traded ETFs.

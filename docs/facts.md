@@ -19,10 +19,10 @@ Market microstructure, retail investor protection, regulation, price discovery, 
 
 ## Papers (canonical detail in `data/papers.yaml`)
 Ordering and titles per 2026 CV. Site never names journals under review (norm); journal names allowed on CV.
-1. "When Lots Matter: SEC Round Lot Modernization and Liquidity" (solo, Nov 2025) — SSRN 5757242 — **job market paper** (fellowship statement).
-2. "Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility" (with Mehmet Sağlam, Nov 2025) — SSRN 4377192 — under review (journal name in papers.yaml `private_notes`). FMA 2023 best-paper-in-microstructure semi-finalist; Bloomberg media coverage; presented FMA 2023 (Chicago), The Microstructure Exchange 2023 (Stockholm), SFA 2024.
+1. "When Lots Matter: The Impact of SEC Round Lot Modernization on Liquidity" (solo, Nov 2025) — SSRN 5757242 — **job market paper**.
+2. "Democratizing or Demoralizing: The Impact of Robinhood's Order Types on Retail Trading Costs" (with Mehmet Sağlam, Nov 2025) — SSRN 4377192 — under review. FMA 2023 best-paper-in-microstructure semi-finalist; Bloomberg media coverage; presented FMA 2023 (Chicago), The Microstructure Exchange 2023 (Stockholm), SFA 2024.
 3. "Taker Delays and Liquidity Provision in Prediction Markets" (solo, May 2026) — Polymarket; no SSRN posting yet.
-4. "Market Making Counterparty Interest" (with Sağlam, June 2025).
+4. "Discriminatory Market Making: Evidence from Institutional Trades" (with Sağlam, July 2026).
 5. "Actively Traded ETFs" (with Sağlam and Tugkan Tuzun, Federal Reserve Board, June 2025).
 - Older WP "A Market Failure to Deliver Informative Prices" (solo, 2023) appears on the 2025 fellowship resume but NOT on the 2026 CV → omit everywhere unless Preston revives it.
 
@@ -47,7 +47,7 @@ Programming: Python, R, SQL, C, Java, HTML/CSS, MATLAB. Software: JMP, Catia, MS
 Mehmet Sağlam — Johnson Associate Professor-track faculty, Finance, UC Lindner. PhD Columbia; market microstructure (HFT, institutional execution, liquidity). Faculty page: https://www.business.uc.edu/faculty-research/finance/faculty/mehmet-saglam.html **[site-ok]**
 
 ## Tools / products
-- **proftools.com** — Canvas LMS quiz-integrity analyzer (ranks students by time spent away from the quiz screen using Canvas blur/focus events; live proctoring dashboard, CSV export). FastAPI backend on Render, Next.js frontend on Vercel. Repo: github.com/jwalkingjew/proftools. **[site-ok]** (repo explored 2026-07-16)
+- **myproftools.com** (secure site: `https://www.myproftools.com/`) — Canvas LMS quiz-integrity analyzer (ranks students by time spent away from the quiz screen using Canvas blur/focus events; live proctoring dashboard, CSV export). FastAPI backend on Render, Next.js frontend on Vercel. Repo: github.com/jwalkingjew/proftools. **[site-ok]** (user, 2026-07-16)
 - Agentic grading/feedback environment — **not yet built**; do not mention publicly (see `docs/roadmap.md`). **[private for now]** (user, 2026-07-16)
 
 ## Media assets

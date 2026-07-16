@@ -1,26 +1,33 @@
 # Style guide
 
-## Voice (site + materials)
-- First person ("I study…"), plain and confident. No hype, no superlatives about self, no emojis, no marketing verbs ("leverage", "passionate").
-- Paper descriptions: one sentence on the question, one on the finding. Findings stated as the paper states them, hedged as the paper hedges them.
-- Audience is dual: academic hiring committees first, industry recruiters second. Lead with research; keep tools/background sections tight and concrete.
+## Voice
 
-## Design (site)
-- Single centered column, max-width ~46rem, generous whitespace.
-- Typography: Georgia/serif stack for body, system sans for headings and metadata. Near-black `#1a1a1a` on white; dark mode via `prefers-color-scheme`.
-- One accent color: muted navy `#1f4e79` (links, JMP badge). Avoid UC red — reads as a university page, not a personal one.
-- Headshot: modest size (~150px), rounded, top of page.
-- Abstracts collapse behind a `<details>` element — no custom JS needed.
-- Badges (job market paper, awards, media) are small uppercase labels, not colorful pills.
-- Mobile: everything single-column, no horizontal scroll. Test at 375px width.
+- First person, plain, and confident. No hype, emojis, or marketing language.
+- The central narrative is that markets are engineered systems. Preston's mechanical engineering background leads naturally to market microstructure, where system design, incentives, and measured outcomes meet.
+- Paper descriptions state the question, design, and finding directly.
+- Academic hiring committees are the primary audience. Industry researchers and recruiters are secondary.
+- Never use em dashes in public site copy. `build.py` enforces this rule.
+
+## Design
+
+- Five pages: Home, Research, Teaching, Tools, and About.
+- Warm editorial palette: paper, deep navy, and restrained burgundy.
+- Typography should feel bookish and credible, not ornamental. Use Charter-style serif stacks for research titles and a neutral system sans-serif for navigation and metadata.
+- Avoid oversized italic display words, script fonts, gradients, excessive pills, generic SaaS layouts, and decorative stock imagery.
+- The original headshot is the primary image. Do not alter Preston's identity or facial features.
+- Light and dark themes must both remain legible.
+- Desktop layout uses structured editorial grids. Mobile collapses cleanly with no horizontal page overflow.
 
 ## HTML conventions
-- Semantic: one `<h1>` (name), `<h2>` per section, `<article>` per paper.
-- Papers link to SSRN via `https://papers.ssrn.com/abstract=<id>`.
-- All external links `rel="noopener"`, open in same tab (academic norm).
-- The template uses `{{placeholder}}` markers replaced by `build.py`; loops are rendered in Python, not in the template.
+
+- One `h1` per page, semantic sections, articles for papers, and accessible table headers.
+- Papers link to SSRN via `https://papers.ssrn.com/sol3/papers.cfm?abstract_id=<id>`.
+- External links use `rel="noopener"` and open in the same tab.
+- Abstracts stay collapsed in native `details` elements.
+- Page content comes from YAML and `build.py`, not hand-edited generated HTML.
 
 ## File conventions
-- YAML in `data/` is the only place content is edited. `site/` is generated.
-- kebab-case ids for papers (`round-lots`, `collaring`).
-- Dates in YAML as `YYYY-MM`.
+
+- Edit content in `data/`, layout in `templates/`, and assets in `static/`.
+- `site/` is generated output and must be committed after every build.
+- Paper IDs use kebab case. Dates in YAML use `YYYY-MM`.

@@ -1,8 +1,8 @@
 # Preston Mantel — PhD Home Base & prestonmantel.com
 
 This repo is two things:
-1. **The source for prestonmantel.com** — a single-page academic site generated from YAML data.
-2. **Preston's PhD home base** — canonical career data + docs that future agents use to update the site, generate CVs, and draft application materials.
+1. **The source for prestonmantel.com**: a five-page academic site generated from YAML data.
+2. **Preston's PhD home base**: canonical career data and docs that future agents use to update the site, generate CVs, and draft application materials.
 
 Preston is a finance PhD candidate at the University of Cincinnati (Lindner College of Business), advisor Mehmet Sağlam, expected graduation May 2027. Research area: market microstructure, retail investor protection, market regulation.
 
@@ -13,6 +13,7 @@ Preston is a finance PhD candidate at the University of Cincinnati (Lindner Coll
 3. **SSRN returns 403 to automated fetches.** Abstract verification requires Preston pasting the text. Ask; don't guess or reconstruct from drafts.
 4. **Never name the journal a paper is under review at on the public site** — "Under review" only. Journal names are fine in `private_notes` and on the CV if Preston asks.
 5. `site/` is **generated output** — never hand-edit it. Edit `data/` or `templates/`, then rebuild.
+6. **Never use em dashes in public site copy.** `build.py` rejects them in generated text assets.
 
 ## The update loop
 
@@ -29,7 +30,7 @@ Commit both the data change AND the regenerated `site/` output. Deploy status: `
 
 | Path | What it is |
 |---|---|
-| `data/profile.yaml` | Name, title, links, bio, video URL — hero + background sections |
+| `data/profile.yaml` | Name, title, engineering narrative, links, bio, and video URL |
 | `data/papers.yaml` | Canonical paper metadata. Feeds site now, CV generation later |
 | `data/teaching.yaml` | Courses, evals, service |
 | `data/projects.yaml` | Tools (proftools.com live; roadmap items have `show_on_site: false`) |
@@ -41,10 +42,12 @@ Commit both the data change AND the regenerated `site/` output. Deploy status: `
 | `docs/roadmap.md` | Unbuilt projects (grading skill, journal-fit chatbot) and how they'll slot in |
 | `archive/` | GITIGNORED. Fellowship 2025 application, annual reports, videos, CV PDFs |
 | `applications/` | GITIGNORED. Workspace for cover letters, statements, drafts |
-| `build.py` | The entire build system (~100 lines, PyYAML only) |
+| `build.py` | Builds Home, Research, Teaching, Tools, and About pages from YAML |
 
 ## Related local repos (context for research/application work)
 
 - `~/environments/ResearchEnv/round_lot_size` — job market paper (When Lots Matter)
 - `~/environments/ResearchEnv/collaring` — Robinhood order-collaring paper
+- `~/environments/ResearchEnv/prediction_markets_research` — prediction-market taker-delay paper
+- `~/environments/ResearchEnv/Data from Mehmet` — institutional market-making paper
 - `~/environments/ResearchEnv/Cheating Analysis` — proftools.com (Canvas quiz-integrity tool)

@@ -21,3 +21,9 @@ letter_of_recommendation.pdf
 # Python
 __pycache__/
 .venv/
+
+# Local build and rendering intermediates
+tmp/
+cv/*.aux
+cv/*.log
+cv/*.out

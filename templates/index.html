@@ -1,65 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{name}} — {{title}}</title>
-  <meta name="description" content="{{name}}, {{title}} at the {{affiliation}}. Research in market microstructure, retail investor protection, and market quality.">
-  <meta property="og:title" content="{{name}} — {{title}}">
-  <meta property="og:description" content="{{tagline}}">
+  <title>{{page_title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3ede2">
+  <link rel="canonical" href="{{canonical}}">
+  <meta property="og:title" content="{{page_title}}">
+  <meta property="og:description" content="{{description}}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://prestonmantel.com/">
-  <meta property="og:image" content="https://prestonmantel.com/img/headshot.jpg">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia'>P</text></svg>">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:image" content="https://prestonmantel.com/img/preston-mantel-social.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="1000">
+  <meta property="og:image:alt" content="Preston Mantel, finance researcher studying markets as engineered systems">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{page_title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="https://prestonmantel.com/img/preston-mantel-social.png">
+  <link rel="icon" href="img/headshot.jpg" type="image/jpeg">
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+    }());
+  </script>
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">{{structured_data}}</script>
 </head>
-<body>
-  <nav>
-    <a href="#research">Research</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#tools">Tools</a>
-    <a href="#background">Background</a>
-  </nav>
-
-  <header>
-    <img src="img/headshot.jpg" alt="Portrait of {{name}}" class="headshot">
-    <div class="intro">
-      <h1>{{name}}</h1>
-      <p class="role">{{title}}<br>{{affiliation}}</p>
-      <p class="tagline">{{tagline}}</p>
-      <p class="job-market">{{job_market_line}}</p>
-      <p class="links"><a href="mailto:{{email}}">Email</a><span class="sep">·</span>{{links_html}}</p>
+<body data-page="{{page_id}}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-name" href="index.html" aria-label="{{name}} home">
+        <span>Preston</span>
+        <span>Mantel</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">{{nav_html}}</nav>
+      <button class="theme-toggle" type="button" aria-label="Change color theme" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">◐</span>
+        <span class="theme-label">Theme</span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <section id="research">
-      <h2>Research</h2>
-      <p class="muted">Interests: {{interests}}</p>
-      {{research_html}}
-    </section>
+  <main id="main-content" class="site-main">{{content_html}}</main>
 
-    <section id="teaching">
-      <h2>Teaching</h2>
-      {{teaching_html}}
-    </section>
-
-    <section id="tools">
-      <h2>Tools</h2>
-      {{projects_html}}
-    </section>
-
-    <section id="background">
-      <h2>Background</h2>
-      <p>{{background}}</p>
-      <p>{{advisor_html}}</p>
-      {{video_html}}
-    </section>
-  </main>
-
-  <footer>
-    <p><a href="mailto:{{email}}">{{email}}</a></p>
-    <p class="muted">© {{year}} {{name}} · Last updated {{build_date}}</p>
+  <footer class="site-footer">
+    <div class="footer-lead">
+      <p class="eyebrow">Get in touch</p>
+      <p>Research, teaching, or market design.</p>
+    </div>
+    <div class="footer-links">{{profile_links_html}}</div>
+    <p class="copyright">© {{year}} Preston Mantel</p>
   </footer>
+  <script src="js/site.js"></script>
 </body>
 </html>
