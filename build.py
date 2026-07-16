@@ -161,7 +161,6 @@ def render_home(profile, papers):
         '<div class="hero-copy">'
         f'<h1>{esc(profile["hero_headline"])}</h1>'
         f'<p class="hero-intro">{esc(profile["hero_intro"])}</p>'
-        f'<p class="job-market-line">{esc(profile["job_market_line"])}</p>'
         '<div class="hero-actions">'
         f'{anchor("research.html", "Explore my research", "button button-primary")}'
         f'{anchor("files/Mantel_CV.pdf", "Download CV", "button button-secondary")}'
