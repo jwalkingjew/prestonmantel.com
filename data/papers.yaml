@@ -1,0 +1,111 @@
+# Canonical paper metadata. Ordering here = ordering on site and CV.
+# RULES (docs/content-rules.md):
+#  - abstract must be VERBATIM from SSRN; set abstract_verified (YYYY-MM-DD) when
+#    Preston confirms. Site renders the abstract only when abstract_verified is set.
+#  - bullets come from the current CV — the only other approved source of numbers.
+#  - Never render private_notes anywhere. Never name under-review journals on the site.
+
+- id: round-lots
+  title: "When Lots Matter: SEC Round Lot Modernization and Liquidity"
+  authors: [Preston Mantel]
+  status: job_market_paper
+  date: 2025-11
+  ssrn: "5757242"
+  abstract: ""            # pending: Preston to paste verbatim from SSRN
+  abstract_verified: null
+  bullets:
+    - Examines market quality and trading behavior effects of SEC round lot modernization.
+    - Studies how round lot definitions affect trading costs by impacting NBBO spreads.
+    - Finds significant decreases in spreads, volatility, and latency following round lot modernization.
+  presentations: []
+  awards: []
+  media: []
+  show_on_site: true
+  private_notes: >-
+    Repo: ~/environments/ResearchEnv/round_lot_size. Target journal ladder:
+    JFM -> JFQA -> JBF (per submission/ folder). Draft numbers (18.4% quoted /
+    6.7% effective spread narrowing, ~$1.4B realized savings) are from the
+    July 2026 revised draft — do not publish until SSRN abstract verified.
+
+- id: collaring
+  title: "Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility"
+  authors: [Preston Mantel, Mehmet Sağlam]
+  status: under_review
+  date: 2025-11
+  ssrn: "4377192"
+  abstract: ""            # pending: Preston to paste verbatim from SSRN
+  abstract_verified: null
+  bullets:
+    - Studies how Robinhood's order-collaring mechanism affects retail trading costs and volatility.
+    - Uses regular hours and after-hours trades to identify the impact of market order collaring.
+    - Finds increased retail trading costs of approximately 2 basis points, or over $2 billion in 2020.
+  presentations:
+    - Financial Management Association Annual Meeting, Chicago (2023)
+    - The Microstructure Exchange, Stockholm (2023)
+    - Southern Finance Association Annual Meeting (2024)
+  awards:
+    - Semi-finalist, Best Paper in Market Microstructure, FMA 2023
+  media:
+    - outlet: Bloomberg
+      url: ""             # ask Preston for the article link
+  show_on_site: true
+  private_notes: >-
+    Under review at the Journal of Financial Economics per 2026 CV (earlier
+    sources say Management Science / JFQA — CV wins; never name journal on site).
+    Repo: ~/environments/ResearchEnv/collaring. PFOF cents-per-share figures in
+    local drafts flagged as unverified — never source numbers from drafts.
+
+- id: prediction-markets
+  title: "Taker Delays and Liquidity Provision in Prediction Markets"
+  authors: [Preston Mantel]
+  status: working
+  date: 2026-05
+  ssrn: null
+  abstract: ""
+  abstract_verified: null
+  bullets:
+    - Studies Polymarket policy changes introducing and removing taker delays in crypto markets.
+    - Uses BBO quotes and on-chain fills to estimate effects on spreads, liquidity, and maker entry.
+    - Finds that taker delays narrow quoted spreads, increase maker entry, and interact with rebates.
+  presentations: []
+  awards: []
+  media: []
+  show_on_site: true
+  private_notes: "Draft available on request; no SSRN posting yet."
+
+- id: counterparty-interest
+  title: "Market Making Counterparty Interest"
+  authors: [Preston Mantel, Mehmet Sağlam]
+  status: working
+  date: 2025-06
+  ssrn: null
+  abstract: ""
+  abstract_verified: null
+  bullets:
+    - Tests whether market makers treat institutional counterparties differently from retail flow.
+    - Maps proprietary institutional trades to TAQ NBBO spreads and intraday price impact.
+    - Replicates prior evidence and finds similar treatment across institutional counterparties.
+  presentations: []
+  awards: []
+  media: []
+  show_on_site: true
+  private_notes: "Uses proprietary broker-identified institutional trade data."
+
+- id: active-etfs
+  title: "Actively Traded ETFs"
+  authors: [Preston Mantel, Mehmet Sağlam, Tugkan Tuzun]
+  author_affiliations: { "Tugkan Tuzun": "Federal Reserve Board" }
+  status: working
+  date: 2025-06
+  ssrn: null
+  abstract: ""
+  abstract_verified: null
+  bullets:
+    - Examines conflicts between managers and investors using trades from actively traded ETFs.
+    - Shows ETF trades predict abnormal volume and associates buy trades with positive one-day returns.
+    - Uses short-sale activity to study whether short sellers respond to ETF-driven mispricing.
+  presentations: []
+  awards: []
+  media: []
+  show_on_site: true
+  private_notes: "Daily ETF position data via UC Bloomberg terminals; Tuzun provides Fed data."

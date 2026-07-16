@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Private material — this repo is PUBLIC on GitHub. Never track these.
+archive/*
+!archive/README.md
+applications/*
+!applications/README.md
+letter_of_recommendation.pdf
+
+# Large media never enters git (videos live locally / on YouTube)
+*.mp4
+*.mov
+*.pptx
+*.docx
+*.xlsx
+
+# Raw headshot original (5.9 MB) — only the compressed copy in static/img/ is tracked
+/headshot.jpeg
+
+# Python
+__pycache__/
+.venv/

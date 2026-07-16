@@ -1,0 +1,135 @@
+/* prestonmantel.com — see docs/style-guide.md before editing */
+:root {
+  --text: #1a1a1a;
+  --muted: #5c6570;
+  --accent: #1f4e79;
+  --rule: #e3e6ea;
+  --bg: #ffffff;
+  --badge-bg: #eef2f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e8e6e3;
+    --muted: #9aa4af;
+    --accent: #7fb0da;
+    --rule: #33383e;
+    --bg: #16181b;
+    --badge-bg: #23272c;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+  max-width: 46rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+}
+h1, h2, h3, h4, nav, .role, .links, .badges, .paper-meta, .muted, footer, table {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.muted { color: var(--muted); font-size: 0.9rem; }
+.sep { color: var(--muted); margin: 0 0.5em; }
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+header {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2.5rem 0 1.5rem;
+}
+.headshot {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+h1 { margin: 0 0 0.25rem; font-size: 2rem; font-weight: 650; }
+.role { margin: 0 0 0.75rem; color: var(--muted); line-height: 1.4; }
+.tagline { margin: 0 0 0.5rem; }
+.job-market { margin: 0 0 0.75rem; font-style: italic; }
+.job-market:empty { display: none; }
+.links { font-size: 0.95rem; }
+
+h2 {
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 1.75rem 0 0.5rem;
+}
+h4 { font-size: 1.05rem; margin: 0 0 0.2rem; }
+
+.paper, .project { margin: 0 0 1.5rem; }
+.authors { margin: 0 0 0.3rem; color: var(--muted); font-size: 0.95rem; }
+.badges { margin: 0.2rem 0 0.4rem; }
+.badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  border-radius: 4px;
+  padding: 0.1rem 0.5rem;
+  margin: 0 0.4rem 0.3rem 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.paper-points { margin: 0.3rem 0 0.5rem; padding-left: 1.3rem; }
+.paper-points li { margin-bottom: 0.15rem; }
+.paper-meta { margin: 0.25rem 0 0; font-size: 0.88rem; color: var(--muted); }
+details { margin: 0.3rem 0 0.5rem; }
+details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+}
+details p { margin: 0.5rem 0 0; }
+
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 0.75rem 0; }
+th, td { text-align: left; padding: 0.45rem 0.75rem 0.45rem 0; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.video { margin-top: 1.25rem; }
+.video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 8px;
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+footer p { margin: 0.2rem 0; }
+
+@media (max-width: 560px) {
+  header { flex-direction: column; gap: 1.25rem; }
+  .headshot { width: 120px; height: 120px; }
+  body { font-size: 1rem; }
+}

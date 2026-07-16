@@ -1,0 +1,129 @@
+% Web-published CV — mirrors archive/annual-reports/2026/preston_mantel_cv.pdf
+% with home address and phone REMOVED (docs/content-rules.md) and website added.
+% Build: pdflatex -output-directory=cv cv/Mantel_CV.tex ; copy PDF to static/files/
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+\pagestyle{empty}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\setlength{\parskip}{4pt}
+\newcommand{\entry}[2]{\noindent\textbf{#1}\hfill #2\par}
+\setlist[itemize]{leftmargin=1.4em, topsep=2pt, itemsep=1pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Preston Mantel}\\[4pt]
+  Ph.D. Candidate, Department of Finance\\
+  Lindner College of Business, University of Cincinnati\\[3pt]
+  \href{mailto:mantelpl@mail.uc.edu}{mantelpl@mail.uc.edu} \quad$\cdot$\quad
+  \href{https://prestonmantel.com}{prestonmantel.com}
+\end{center}
+
+\section{Education}
+\entry{Ph.D. in Finance, University of Cincinnati}{2022--Present}
+Dissertation: \textit{Essays on Market Microstructure Frictions and Retail Investors}\\
+Committee: Mehmet Saglam (Chair)\\
+GPA: 3.98/4.0
+
+\entry{B.S. in Mechanical Engineering, Purdue University}{2014--2018}
+Minors: Computer Science, Global Engineering Studies\\
+GPA: 3.7/4.0\\
+Study Abroad: Universidad Carlos III de Madrid, Spain \hfill Spring 2017
+
+\section{Research Interests}
+Market Microstructure, Retail Investor Protection, Regulation, Price Discovery, Market Quality
+
+\section{Working Papers}
+Mantel, Preston. ``Taker Delays and Liquidity Provision in Prediction Markets.'' Working Paper, May 2026.
+\begin{itemize}
+  \item Studies Polymarket policy changes introducing and removing taker delays in crypto markets.
+  \item Uses BBO quotes and on-chain fills to estimate effects on spreads, liquidity, and maker entry.
+  \item Finds that taker delays narrow quoted spreads, increase maker entry, and interact with rebates.
+\end{itemize}
+
+Mantel, Preston. ``When Lots Matter: SEC Round Lot Modernization and Liquidity.'' Working Paper, November 2025. Available at SSRN: \url{https://ssrn.com/abstract=5757242}
+\begin{itemize}
+  \item Examines market quality and trading behavior effects of SEC round lot modernization.
+  \item Studies how round lot definitions affect trading costs by impacting NBBO spreads.
+  \item Finds significant decreases in spreads, volatility, and latency following round lot modernization.
+\end{itemize}
+
+Mantel, Preston and Mehmet Saglam. ``Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility.'' Working Paper, November 2025. Available at SSRN: \url{https://ssrn.com/abstract=4377192}
+\begin{itemize}
+  \item Studies how Robinhood's order-collaring mechanism affects retail trading costs and volatility.
+  \item Uses regular hours and after-hours trades to identify the impact of market order collaring.
+  \item Finds increased retail trading costs of approximately 2 basis points, or over \$2 billion in 2020.
+\end{itemize}
+
+Mantel, Preston and Mehmet Saglam. ``Market Making Counterparty Interest.'' Working Paper, June 2025.
+\begin{itemize}
+  \item Tests whether market makers treat institutional counterparties differently from retail flow.
+  \item Maps proprietary institutional trades to TAQ NBBO spreads and intraday price impact.
+  \item Replicates prior evidence and finds similar treatment across institutional counterparties.
+\end{itemize}
+
+Mantel, Preston, Mehmet Saglam, and Tugkan Tuzun (Federal Reserve). ``Actively Traded ETFs.'' Working Paper, June 2025.
+\begin{itemize}
+  \item Examines conflicts between managers and investors using trades from actively traded ETFs.
+  \item Shows ETF trades predict abnormal volume and associates buy trades with positive one-day returns.
+  \item Uses short-sale activity to study whether short sellers respond to ETF-driven mispricing.
+\end{itemize}
+
+\section{Papers Under Review}
+``Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility''\\
+\hspace*{1.4em}Submitted to the \textit{Journal of Financial Economics}
+
+\section{Conference Presentations}
+``Democratizing or Demoralizing: Impact of Robinhood on Costs and Volatility''
+\begin{itemize}
+  \item Financial Management Association Annual Meeting, Chicago, IL \hfill 2023
+  \item The Microstructure Exchange, Stockholm, Sweden \hfill 2023
+  \item Southern Finance Association Annual Meeting \hfill 2024
+\end{itemize}
+
+\section{Teaching Experience}
+\entry{Instructor of Record, University of Cincinnati}{2022--Present}
+\begin{itemize}
+  \item Financial Markets \& Institutions (FIN 4053, 69 students) \hfill Fall 2023\\
+        Evaluation (instructor was excellent): Mean 7.11, Median 8
+  \item Financial Modelling (FIN 4041, 49 students) \hfill Spring 2025\\
+        Evaluation (instructor was excellent): Mean 7.36, Median 8
+  \item Financial Modelling (FIN 4041, 64 students) \hfill Summer 2025\\
+        Evaluation (instructor was excellent): Mean 7.61, Median 8
+\end{itemize}
+\entry{Graduate Assistant, University of Cincinnati}{2022--2023}
+\begin{itemize}
+  \item Assisted with two finance courses
+\end{itemize}
+
+\section{Service and Mentorship}
+\begin{itemize}
+  \item Advisor, Bloomberg Trading Competition student team, University of Cincinnati
+\end{itemize}
+
+\section{Relevant Coursework}
+Empirical and Theoretical Corporate Finance and Asset Pricing, Bayesian and Frequentist Econometrics, Advanced Microeconomics, Big Data Analytics, Game Theory, Statistical Modelling, Forecasting
+
+\section{Professional Experience}
+\entry{Founder \& COO, Digital Paradise, Indianapolis, IN}{Aug.\ 2020--Aug.\ 2022}
+Founded marketing business; grew operations to over \$100K in yearly revenue with 2+ employees.
+
+\entry{Technology Consulting Analyst, Deloitte, Chicago, IL}{Aug.\ 2019--Aug.\ 2020}
+Clients: Nestle and Intel.
+
+\entry{Director of Operations, Watchtower Robotics, Boston, MA}{Jan.\ 2019--Jun.\ 2019}
+Managed 15 employees and \$175K in grant income.
+
+\section{Technical Skills}
+\textbf{Programming:} Python, R, SQL, C, Java, HTML/CSS, MATLAB\\
+\textbf{Software:} JMP, Catia, Microsoft Office, Adobe Creative Suite, \LaTeX
+
+\end{document}

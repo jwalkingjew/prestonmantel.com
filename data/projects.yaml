@@ -1,0 +1,28 @@
+# Tools & software. Only show_on_site: true entries render.
+# Unbuilt/roadmap items stay hidden — see docs/roadmap.md before flipping a flag.
+- id: proftools
+  name: ProfTools
+  url: https://proftools.com
+  show_on_site: true
+  description: >-
+    A quiz-integrity analyzer for the Canvas LMS. Instructors connect their
+    Canvas account and get a report ranking exam submissions by time spent
+    away from the quiz screen, plus a live proctoring dashboard for exams in
+    progress. Built with FastAPI and Next.js.
+
+- id: grading-agent
+  name: Agentic grading & feedback environment
+  url: ""
+  show_on_site: false   # not fully built — see docs/roadmap.md §1 before enabling
+  description: >-
+    An agent-assisted workflow for grading and delivering individualized
+    feedback to students, to be packaged as a reusable Claude skill.
+
+- id: journal-fit
+  name: Journal fit report chatbot
+  url: ""
+  show_on_site: false   # idea stage — see docs/roadmap.md §2
+  description: >-
+    Submit a paper or research idea and receive a report on fit with
+    different finance journals, grounded in published research from
+    top journals.

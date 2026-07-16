@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{name}} — {{title}}</title>
+  <meta name="description" content="{{name}}, {{title}} at the {{affiliation}}. Research in market microstructure, retail investor protection, and market quality.">
+  <meta property="og:title" content="{{name}} — {{title}}">
+  <meta property="og:description" content="{{tagline}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prestonmantel.com/">
+  <meta property="og:image" content="https://prestonmantel.com/img/headshot.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia'>P</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav>
+    <a href="#research">Research</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#tools">Tools</a>
+    <a href="#background">Background</a>
+  </nav>
+
+  <header>
+    <img src="img/headshot.jpg" alt="Portrait of {{name}}" class="headshot">
+    <div class="intro">
+      <h1>{{name}}</h1>
+      <p class="role">{{title}}<br>{{affiliation}}</p>
+      <p class="tagline">{{tagline}}</p>
+      <p class="job-market">{{job_market_line}}</p>
+      <p class="links"><a href="mailto:{{email}}">Email</a><span class="sep">·</span>{{links_html}}</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="research">
+      <h2>Research</h2>
+      <p class="muted">Interests: {{interests}}</p>
+      {{research_html}}
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      {{teaching_html}}
+    </section>
+
+    <section id="tools">
+      <h2>Tools</h2>
+      {{projects_html}}
+    </section>
+
+    <section id="background">
+      <h2>Background</h2>
+      <p>{{background}}</p>
+      <p>{{advisor_html}}</p>
+      {{video_html}}
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="mailto:{{email}}">{{email}}</a></p>
+    <p class="muted">© {{year}} {{name}} · Last updated {{build_date}}</p>
+  </footer>
+</body>
+</html>

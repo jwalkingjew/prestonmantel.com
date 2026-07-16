@@ -1,0 +1,39 @@
+# Hero + background + footer content. See docs/facts.md for sources.
+name: Preston Mantel
+title: Ph.D. Candidate in Finance
+affiliation: Carl H. Lindner College of Business, University of Cincinnati
+email: mantelpl@mail.uc.edu
+tagline: >-
+  I study market microstructure — retail order routing, market design,
+  and liquidity — with a focus on how market rules shape trading costs
+  for everyday investors.
+# Confirm wording with Preston before/at launch review:
+job_market_line: >-
+  I am on the 2026–27 academic job market and expect to graduate in May 2027.
+advisor:
+  name: Mehmet Sağlam
+  url: https://www.business.uc.edu/faculty-research/finance/faculty/mehmet-saglam.html
+links:
+  - label: CV
+    url: files/Mantel_CV.pdf
+  - label: SSRN
+    url: ""   # ask Preston for his SSRN author-page URL; link hidden while empty
+  - label: LinkedIn
+    url: ""   # ask Preston for profile URL; link hidden while empty
+  - label: GitHub
+    url: https://github.com/jwalkingjew
+research_interests:
+  - Market Microstructure
+  - Retail Investor Protection
+  - Regulation
+  - Price Discovery
+  - Market Quality
+background: >-
+  Before my Ph.D., I worked as a technology consulting analyst at Deloitte,
+  served as Director of Operations at Watchtower Robotics, and founded
+  Digital Paradise, a marketing business I grew to six-figure annual revenue.
+  I hold a B.S. in Mechanical Engineering from Purdue University with minors
+  in Computer Science and Global Engineering Studies, and I am an Eagle Scout.
+# YouTube embed ID (e.g. "dQw4w9WgXcQ") — section hidden while empty.
+video_youtube_id: ""
+video_caption: A three-minute overview of my research and why it matters for everyday investors.
