@@ -958,11 +958,34 @@ tbody th span {
 }
 
 .video-section {
-  padding: 32px 0 84px;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.58fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 84px);
+  padding: 64px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.video-copy h2 {
+  max-width: 420px;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(34px, 3.5vw, 48px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.video-copy > p:last-child {
+  max-width: 440px;
+  margin: 18px 0 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .video-frame {
-  padding: 14px;
+  padding: 10px;
   background: var(--navy);
 }
 
@@ -971,11 +994,6 @@ tbody th span {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
-}
-
-.caption {
-  color: var(--ink-soft);
-  font-size: 13px;
 }
 
 .site-footer {
@@ -1190,6 +1208,21 @@ tbody th span {
 
   .engineering-bridge p {
     font-size: 18px;
+  }
+
+  .video-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 44px 0;
+  }
+
+  .video-copy h2 {
+    max-width: 560px;
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  .video-copy > p:last-child {
+    margin-top: 12px;
   }
 
   .featured-paper {

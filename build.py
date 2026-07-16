@@ -179,6 +179,7 @@ def render_home(profile, papers):
         '<span aria-hidden="true">=</span>'
         '<p>Market microstructure studies both.</p>'
         '</section>'
+        f'{render_video(profile)}'
         f'{render_featured_paper(featured)}'
         '<section class="research-lenses">'
         '<div class="section-heading"><p class="eyebrow">Research Lens</p><h2>How I approach markets</h2></div>'
@@ -261,13 +262,14 @@ def render_video(profile):
     if not video_id:
         return ""
     return (
-        '<section class="video-section"><div class="section-heading"><p class="eyebrow">Research Overview</p>'
-        '<h2>Why market design matters</h2></div>'
+        '<section class="video-section"><div class="video-copy">'
+        '<p class="eyebrow">Video Introduction</p><h2>My research in three minutes</h2>'
+        f'<p>{esc(profile.get("video_caption", ""))}</p></div>'
         '<div class="video-frame"><iframe loading="lazy" '
         f'src="https://www.youtube-nocookie.com/embed/{esc(video_id)}" '
         'title="Preston Mantel research overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '
         'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
-        f'<p class="caption">{esc(profile.get("video_caption", ""))}</p></section>'
+        '</section>'
     )
 
 
@@ -286,7 +288,6 @@ def render_about(profile):
         '<article><p class="eyebrow">Finance</p><h2>University of Cincinnati</h2><p>Ph.D. Candidate studying market microstructure, retail investor protection, and market regulation.</p></article>'
         '</section>'
         f'<section class="interest-section"><p class="eyebrow">Research Interests</p><ul class="interest-list">{interests}</ul></section>'
-        f'{render_video(profile)}'
     )
 
 
