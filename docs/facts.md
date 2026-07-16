@@ -34,6 +34,10 @@ Ordering and titles per 2026 CV. Site never names journals under review (norm); 
 - Graduate Assistant, 2022–2023 (two finance courses) **[cv-only]**
 - Advisor, Bloomberg Trading Competition student team, UC **[site-ok]** (2026 CV)
 
+## Honors and awards
+- Research Excellence Award, Department of Finance, University of Cincinnati, 2025 **[site-ok]** (user, 2026-07-16)
+- Teaching Excellence Award, Department of Finance, University of Cincinnati, 2025 **[site-ok]** (user, 2026-07-16)
+
 ## Professional experience
 - Founder & COO, Digital Paradise, Indianapolis, Aug 2020–Aug 2022 — grew to $100K+ yearly revenue, 2+ employees **[site-ok]** (2026 CV)
 - Technology Consulting Analyst, Deloitte, Chicago, Aug 2019–Aug 2020 — clients Nestlé and Intel **[site-ok]** (2026 CV)

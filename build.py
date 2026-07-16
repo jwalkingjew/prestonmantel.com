@@ -337,6 +337,20 @@ def render_about(profile):
     advisor = profile.get("advisor") or {}
     advisor_html = anchor(advisor["url"], advisor["name"]) if advisor.get("url") else esc(advisor.get("name", ""))
     interests = "".join(f'<li>{esc(item)}</li>' for item in profile.get("research_interests", []))
+    awards = "".join(
+        '<article>'
+        f'<span class="recognition-number">{number:02d}</span>'
+        f'<div><h3>{esc(award["title"])}</h3><p>{esc(award["organization"])}</p></div>'
+        f'<time datetime="{esc(award["year"])}">{esc(award["year"])}</time>'
+        '</article>'
+        for number, award in enumerate(profile.get("awards", []), 1)
+    )
+    recognition = (
+        '<section class="recognition-section" aria-labelledby="recognition-title">'
+        '<div class="section-heading"><p class="eyebrow">Recognition</p>'
+        '<h2 id="recognition-title">Department awards</h2></div>'
+        f'<div class="recognition-list">{awards}</div></section>'
+    ) if awards else ""
     return (
         '<header class="page-hero about-hero"><p class="eyebrow">About</p><h1>Engineering, finance, and market design</h1>'
         '<p>Engineering gave me a way to think about constraints, feedback, and system performance. Finance gave me a new class of systems to study.</p></header>'
@@ -347,6 +361,7 @@ def render_about(profile):
         '<article><p class="eyebrow">Engineering</p><h2>Purdue University</h2><p>B.S. in Mechanical Engineering with minors in Computer Science and Global Engineering Studies.</p></article>'
         '<article><p class="eyebrow">Finance</p><h2>University of Cincinnati</h2><p>Ph.D. Candidate studying market microstructure, retail investor protection, and market regulation.</p></article>'
         '</section>'
+        f'{recognition}'
         f'<section class="interest-section"><p class="eyebrow">Research Interests</p><ul class="interest-list">{interests}</ul></section>'
     )
 
