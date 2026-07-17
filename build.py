@@ -184,19 +184,20 @@ def render_directory_paper(paper, number, status_label):
     )
 
 
-def render_featured_paper(paper):
+def render_featured_paper(paper, include_details_link=True):
     url = paper_url(paper)
     points = "".join(f'<li>{esc(point)}</li>' for point in paper.get("bullets", [])[:2])
     primary = anchor(url, "Read on SSRN", "button button-light") if url else ""
+    details = anchor("research.html#" + paper["id"], "Research details", "button button-outline-light") if include_details_link else ""
     return (
-        '<section class="featured-paper" aria-labelledby="featured-title">'
+        f'<section class="featured-paper" id="{esc(paper["id"])}" aria-labelledby="featured-title">'
         '<div class="featured-index"><span>01</span><span>Featured Research</span></div>'
         '<div class="featured-main">'
         '<p class="eyebrow eyebrow-light">Job Market Paper</p>'
         f'<h2 id="featured-title">{esc(paper.get("short_title", paper["title"]))}</h2>'
         f'<p class="featured-full-title">{esc(paper["title"])}</p>'
         f'<ul>{points}</ul>'
-        f'<div class="featured-actions">{primary}{anchor("research.html#" + paper["id"], "Research details", "button button-outline-light")}</div>'
+        f'<div class="featured-actions">{primary}{details}</div>'
         '</div></section>'
     )
 
@@ -248,7 +249,7 @@ def render_research(profile, papers):
     return (
         '<header class="page-hero directory-page-hero"><p class="eyebrow">Research Directory</p><h1>Research</h1>'
         '<p>I study how trading rules and market mechanisms shape liquidity, price discovery, and investor outcomes.</p></header>'
-        f'{render_research_feature(featured)}'
+        f'{render_featured_paper(featured, include_details_link=False)}'
         '<section class="research-directory" data-tabset>'
         '<div class="directory-heading"><p class="eyebrow">Additional Research</p><h2>Browse papers by status</h2></div>'
         '<div class="directory-tabs" role="tablist" aria-label="Research categories">'
@@ -261,38 +262,40 @@ def render_research(profile, papers):
     )
 
 
-def render_teaching(teaching):
-    course_cards = "".join(
-        '<article class="teaching-course-card">'
-        f'<div class="teaching-course-meta"><strong>{esc(course["code"])}</strong><span>{esc(course["term"])}</span></div>'
-        f'<h2>{esc(course["name"])}</h2>'
-        '<dl>'
-        f'<div><dt>Students</dt><dd>{esc(course["students"])}</dd></div>'
-        f'<div><dt>Mean Evaluation</dt><dd>{esc(course["eval_mean"])} / 8</dd></div>'
-        f'<div><dt>Median</dt><dd>{esc(course["eval_median"])} / 8</dd></div>'
-        '</dl></article>' for course in teaching["courses"]
-    )
-    evaluation_rows = "".join(
+def render_teaching(teaching, profile):
+    course_rows = "".join(
         '<div class="evaluation-row">'
         f'<div><strong>{esc(course["name"])}</strong><span>{esc(course["code"])} · {esc(course["term"])}</span></div>'
+        f'<div><small>Students</small><strong>{esc(course["students"])}</strong></div>'
         f'<div><small>Mean</small><strong>{esc(course["eval_mean"])} / 8</strong></div>'
         f'<div><small>Median</small><strong>{esc(course["eval_median"])} / 8</strong></div>'
         '</div>' for course in teaching["courses"]
     )
-    service_cards = "".join(f'<article class="service-card"><p>{esc(item)}</p></article>' for item in teaching.get("service", []))
+    award_rows = "".join(
+        '<article class="award-service-row">'
+        f'<div><h3>{esc(award["title"])}</h3><p>{esc(award["organization"])}</p></div>'
+        f'<time datetime="{esc(award["year"])}">{esc(award["year"])}</time>'
+        '</article>' for award in profile.get("awards", [])
+    )
+    service_rows = "".join(
+        f'<article class="award-service-row service-entry"><div><h3>{esc(item)}</h3></div></article>'
+        for item in teaching.get("service", [])
+    )
     return (
         '<header class="page-hero directory-page-hero"><p class="eyebrow">Teaching Record</p><h1>Teaching</h1>'
-        '<p>Courses, evaluations, and service at the University of Cincinnati.</p></header>'
+        '<p>Courses, evaluations, awards, and service at the University of Cincinnati.</p></header>'
         '<section class="teaching-directory" data-tabset>'
         '<div class="directory-tabs" role="tablist" aria-label="Teaching categories">'
-        '<button type="button" role="tab" id="teaching-tab-courses" aria-controls="teaching-panel-courses" aria-selected="true">Courses</button>'
-        '<button type="button" role="tab" id="teaching-tab-evaluations" aria-controls="teaching-panel-evaluations" aria-selected="false" tabindex="-1">Evaluations</button>'
-        '<button type="button" role="tab" id="teaching-tab-service" aria-controls="teaching-panel-service" aria-selected="false" tabindex="-1">Service</button>'
+        '<button type="button" role="tab" id="teaching-tab-courses" aria-controls="teaching-panel-courses" aria-selected="true">Courses and Evaluations</button>'
+        '<button type="button" role="tab" id="teaching-tab-service" aria-controls="teaching-panel-service" aria-selected="false" tabindex="-1">Awards and Service</button>'
         '</div>'
-        f'<div class="directory-panel teaching-course-grid" id="teaching-panel-courses" role="tabpanel" aria-labelledby="teaching-tab-courses">{course_cards}</div>'
-        '<div class="directory-panel evaluation-directory" id="teaching-panel-evaluations" role="tabpanel" aria-labelledby="teaching-tab-evaluations" hidden>'
-        f'<p class="evaluation-context"><strong>Evaluation scale:</strong> {esc(teaching["eval_note"])}</p>{evaluation_rows}</div>'
-        f'<div class="directory-panel service-directory" id="teaching-panel-service" role="tabpanel" aria-labelledby="teaching-tab-service" hidden>{service_cards}</div>'
+        '<div class="directory-panel evaluation-directory teaching-records" id="teaching-panel-courses" role="tabpanel" aria-labelledby="teaching-tab-courses">'
+        f'<p class="evaluation-context"><strong>Evaluation scale:</strong> {esc(teaching["eval_note"])}</p>{course_rows}</div>'
+        '<div class="directory-panel recognition-service-directory" id="teaching-panel-service" role="tabpanel" aria-labelledby="teaching-tab-service" hidden>'
+        '<section class="record-group" aria-labelledby="teaching-awards-title"><p class="eyebrow">Recognition</p><h2 id="teaching-awards-title">Honors and Awards</h2>'
+        f'<div class="award-service-list">{award_rows}</div></section>'
+        '<section class="record-group" aria-labelledby="teaching-service-title"><p class="eyebrow">Service</p><h2 id="teaching-service-title">Service and Mentorship</h2>'
+        f'<div class="award-service-list">{service_rows}</div></section></div>'
         '</section>'
     )
 
@@ -428,7 +431,7 @@ def main():
     page_content = {
         "home": (f'{profile["name"]} | Finance Researcher', profile["tagline"], render_home(profile, papers)),
         "research": (f'Research | {profile["name"]}', 'Research on market microstructure, market design, retail trading, and liquidity.', render_research(profile, papers)),
-        "teaching": (f'Teaching | {profile["name"]}', 'Teaching experience and instructor evaluations at the University of Cincinnati.', render_teaching(teaching)),
+        "teaching": (f'Teaching | {profile["name"]}', 'Teaching experience, instructor evaluations, awards, and service at the University of Cincinnati.', render_teaching(teaching, profile)),
         "tools": (f'Tools | {profile["name"]}', 'Research and teaching tools built by Preston Mantel.', render_tools(projects)),
         "about": (f'About | {profile["name"]}', 'Background, education, and research perspective of Preston Mantel.', render_about(profile)),
     }

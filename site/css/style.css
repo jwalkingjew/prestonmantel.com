@@ -1210,6 +1210,10 @@ tbody th span {
   border-top: 1px solid var(--rule);
 }
 
+.teaching-records .evaluation-row {
+  grid-template-columns: minmax(0, 1fr) 100px 130px 130px;
+}
+
 .evaluation-row:last-child {
   border-bottom: 1px solid var(--rule);
 }
@@ -1255,6 +1259,56 @@ tbody th span {
   margin: 0;
   font-family: var(--serif);
   font-size: 21px;
+}
+
+.record-group + .record-group {
+  margin-top: 48px;
+}
+
+.record-group > .eyebrow {
+  margin-bottom: 8px;
+}
+
+.record-group > h2 {
+  margin: 0 0 20px;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.award-service-list {
+  border-top: 1px solid var(--rule);
+}
+
+.award-service-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.award-service-row h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.award-service-row p {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.award-service-row time {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .tools-list {
@@ -1947,6 +2001,10 @@ tbody th span {
     padding-left: 0;
   }
 
+  .teaching-records .evaluation-row {
+    grid-template-columns: minmax(0, 1fr) repeat(3, 90px);
+  }
+
   .paper-group {
     padding-top: 32px;
   }
@@ -2195,11 +2253,21 @@ tbody th span {
   }
 
   .evaluation-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .evaluation-row > div:first-child {
     grid-column: 1 / -1;
+  }
+
+  .teaching-records .evaluation-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .award-service-row {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
